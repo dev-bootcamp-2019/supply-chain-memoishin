@@ -5,6 +5,8 @@ contract SupplyChain {
     /* set owner */
     address owner;
 
+    address emptyAddress = 0x0000000000000000000000000000000000000000;
+
     /* Add a variable called skuCount to track the most recent sku # */
     uint skuCount;
 
@@ -32,7 +34,7 @@ contract SupplyChain {
         uint sku;
         uint price;
         State state;
-        address seller;
+        address payable seller;
         address buyer;
     }
 
@@ -95,7 +97,7 @@ contract SupplyChain {
 
     function addItem(string memory _name, uint _price) public returns(bool){
         emit ForSale(skuCount);
-        items[skuCount] = Item({name: _name, sku: skuCount, price: _price, state: State.ForSale, seller: msg.sender, buyer: 0});
+        items[skuCount] = Item({name: _name, sku: skuCount, price: _price, state: State.ForSale, seller: msg.sender, buyer: emptyAddress});
         skuCount = skuCount + 1;
         return true;
     }
