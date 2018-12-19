@@ -93,7 +93,7 @@ contract SupplyChain {
         skuCount = 0;
     }
 
-    function addItem(string _name, uint _price) public returns(bool){
+    function addItem(string memory _name, uint _price) public returns(bool){
         emit ForSale(skuCount);
         items[skuCount] = Item({name: _name, sku: skuCount, price: _price, state: State.ForSale, seller: msg.sender, buyer: 0});
         skuCount = skuCount + 1;
@@ -135,7 +135,7 @@ contract SupplyChain {
     }
 
     /* We have these functions completed so we can run tests, just ignore it :) */
-    function fetchItem(uint _sku) public view returns (string name, uint sku, uint price, uint state, address seller, address buyer) {
+    function fetchItem(uint _sku) public view returns (string memory name, uint sku, uint price, uint state, address seller, address buyer) {
         name = items[_sku].name;
         sku = items[_sku].sku;
         price = items[_sku].price;
