@@ -1,4 +1,4 @@
-pragma solidity 0.4.24;
+pragma solidity ^0.4.23;
 
 contract SupplyChain {
 
@@ -59,7 +59,7 @@ contract SupplyChain {
         _;
         uint _price = items[_sku].price;
         uint amountToRefund = msg.value - _price;
-        items[_sku].buyer.transfer(amountToRefund);
+        msg.sender.transfer(amountToRefund);
     }
 
     /* For each of the following modifiers, use what you learned about modifiers
