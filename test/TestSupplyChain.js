@@ -21,8 +21,7 @@ contract('SupplyChain', function(accounts) {
 
         var eventEmitted = false
 
-        var event = supplyChain.ForSale()
-        await event.watch((err, res) => {
+        await supplyChain.ForSale({}, function(err, res) {
             sku = res.args.sku.toString(10)
             eventEmitted = true
         })
@@ -49,8 +48,7 @@ contract('SupplyChain', function(accounts) {
 
         var eventEmitted = false
 
-        var event = supplyChain.ForSale()
-        await event.watch((err, res) => {
+        await supplyChain.ForSale({}, function(err, res) {
             sku = res.args.sku.toString(10)
             eventEmitted = true
         })
@@ -79,8 +77,7 @@ contract('SupplyChain', function(accounts) {
 
         var eventEmitted = false
 
-        var event = supplyChain.ForSale()
-        await event.watch((err, res) => {
+        await supplyChain.ForSale({}, function(err, res) {
             sku = res.args.sku.toString(10)
             eventEmitted = true
         })
@@ -107,8 +104,7 @@ contract('SupplyChain', function(accounts) {
 
         var eventEmitted = false
 
-        var event = supplyChain.ForSale()
-        await event.watch((err, res) => {
+        await supplyChain.ForSale({}, function(err, res) {
             sku = res.args.sku.toString(10)
             eventEmitted = true
         })
@@ -137,8 +133,7 @@ contract('SupplyChain', function(accounts) {
 
         var eventEmitted = false
 
-        var event = supplyChain.ForSale()
-        await event.watch((err, res) => {
+        await supplyChain.ForSale({}, function(err, res) {
             sku = res.args.sku.toString(10)
             eventEmitted = true
         })
@@ -167,8 +162,7 @@ contract('SupplyChain', function(accounts) {
 
         var eventEmitted = false
 
-        var event = supplyChain.ForSale()
-        await event.watch((err, res) => {
+        await supplyChain.ForSale({}, function(err, res) {
             sku = res.args.sku.toString(10)
             eventEmitted = true
         })

@@ -34,7 +34,7 @@ contract SupplyChain {
         uint sku;
         uint price;
         State state;
-        address payable seller;
+        address seller;
         address buyer;
     }
 
