@@ -46,7 +46,7 @@ contract('SupplyChain', function(accounts) {
             eventEmitted = true
         })
 
-        const amount = web3.toWei(2, "ether")
+        const amount = 2
 
         var aliceBalanceBefore = await web3.eth.getBalance(alice).toNumber()
         var bobBalanceBefore = await web3.eth.getBalance(bob).toNumber()
