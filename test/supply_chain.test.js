@@ -16,6 +16,7 @@ contract('SupplyChain', function(accounts) {
         var eventEmitted = false
 
         await supplyChain.ForSale({}, function(err, res) {
+            console.log(res)
             sku = res.args.sku.toString(10)
             eventEmitted = true
         })
