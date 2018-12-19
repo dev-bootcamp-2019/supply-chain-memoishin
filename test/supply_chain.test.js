@@ -8,7 +8,7 @@ contract('SupplyChain', function(accounts) {
     const emptyAddress = '0x0000000000000000000000000000000000000000'
 
     var sku
-    const price = web3.toWei(1, "ether")
+    const price = 1
 
     it("should add an item with the provided name and price", async() => {
         const supplyChain = await SupplyChain.deployed()
