@@ -8,15 +8,15 @@ contract('SupplyChain', function(accounts) {
     const emptyAddress = '0x0000000000000000000000000000000000000000'
 
     var sku
-    const price = 1
+    const price = web3.toWei(1, "ether")
 
     it("should add an item with the provided name and price", async() => {
         const supplyChain = await SupplyChain.deployed()
 
         var eventEmitted = false
 
-        await supplyChain.ForSale({}, function(err, res) {
-            console.log(res)
+        var event = supplyChain.ForSale()
+        await event.watch((err, res) => {
             sku = res.args.sku.toString(10)
             eventEmitted = true
         })
@@ -40,12 +40,13 @@ contract('SupplyChain', function(accounts) {
 
         var eventEmitted = false
 
-        await supplyChain.Sold({}, function(err, res) {
+        var event = supplyChain.Sold()
+        await event.watch((err, res) => {
             sku = res.args.sku.toString(10)
             eventEmitted = true
         })
 
-        const amount = 2
+        const amount = web3.toWei(2, "ether")
 
         var aliceBalanceBefore = await web3.eth.getBalance(alice).toNumber()
         var bobBalanceBefore = await web3.eth.getBalance(bob).toNumber()
@@ -69,7 +70,8 @@ contract('SupplyChain', function(accounts) {
 
         var eventEmitted = false
 
-        await supplyChain.Shipped({}, function(err, res) {
+        var event = supplyChain.Shipped()
+        await event.watch((err, res) => {
             sku = res.args.sku.toString(10)
             eventEmitted = true
         })
@@ -87,7 +89,8 @@ contract('SupplyChain', function(accounts) {
 
         var eventEmitted = false
 
-        await supplyChain.Received({}, function(err, res) {
+        var event = supplyChain.Received()
+        await event.watch((err, res) => {
             sku = res.args.sku.toString(10)
             eventEmitted = true
         })

@@ -1,11 +1,9 @@
-pragma solidity 0.5.0;
+pragma solidity ^0.4.23;
 
 contract SupplyChain {
 
     /* set owner */
     address owner;
-
-    address emptyAddress = 0x0000000000000000000000000000000000000000;
 
     /* Add a variable called skuCount to track the most recent sku # */
     uint skuCount;
@@ -34,7 +32,7 @@ contract SupplyChain {
         uint sku;
         uint price;
         State state;
-        address payable seller;
+        address seller;
         address buyer;
     }
 
@@ -61,7 +59,7 @@ contract SupplyChain {
         _;
         uint _price = items[_sku].price;
         uint amountToRefund = msg.value - _price;
-        msg.sender.transfer(amountToRefund);
+        items[_sku].buyer.transfer(amountToRefund);
     }
 
     /* For each of the following modifiers, use what you learned about modifiers
@@ -95,9 +93,9 @@ contract SupplyChain {
         skuCount = 0;
     }
 
-    function addItem(string memory _name, uint _price) public returns(bool){
+    function addItem(string _name, uint _price) public returns(bool){
         emit ForSale(skuCount);
-        items[skuCount] = Item({name: _name, sku: skuCount, price: _price, state: State.ForSale, seller: msg.sender, buyer: emptyAddress});
+        items[skuCount] = Item({name: _name, sku: skuCount, price: _price, state: State.ForSale, seller: msg.sender, buyer: 0});
         skuCount = skuCount + 1;
         return true;
     }
@@ -137,7 +135,7 @@ contract SupplyChain {
     }
 
     /* We have these functions completed so we can run tests, just ignore it :) */
-    function fetchItem(uint _sku) public view returns (string memory name, uint sku, uint price, uint state, address seller, address buyer) {
+    function fetchItem(uint _sku) public view returns (string name, uint sku, uint price, uint state, address seller, address buyer) {
         name = items[_sku].name;
         sku = items[_sku].sku;
         price = items[_sku].price;

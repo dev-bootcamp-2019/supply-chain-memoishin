@@ -11,7 +11,7 @@ contract('SupplyChain', function(accounts) {
     const emptyAddress = '0x0000000000000000000000000000000000000000'
 
     var sku
-    const price = 1
+    const price = web3.toWei(1, "ether")
 
     // buyItem
 
@@ -21,7 +21,8 @@ contract('SupplyChain', function(accounts) {
 
         var eventEmitted = false
 
-        await supplyChain.ForSale({}, function(err, res) {
+        var event = supplyChain.ForSale()
+        await event.watch((err, res) => {
             sku = res.args.sku.toString(10)
             eventEmitted = true
         })
@@ -48,7 +49,8 @@ contract('SupplyChain', function(accounts) {
 
         var eventEmitted = false
 
-        await supplyChain.ForSale({}, function(err, res) {
+        var event = supplyChain.ForSale()
+        await event.watch((err, res) => {
             sku = res.args.sku.toString(10)
             eventEmitted = true
         })
@@ -77,7 +79,8 @@ contract('SupplyChain', function(accounts) {
 
         var eventEmitted = false
 
-        await supplyChain.ForSale({}, function(err, res) {
+        var event = supplyChain.ForSale()
+        await event.watch((err, res) => {
             sku = res.args.sku.toString(10)
             eventEmitted = true
         })
@@ -104,7 +107,8 @@ contract('SupplyChain', function(accounts) {
 
         var eventEmitted = false
 
-        await supplyChain.ForSale({}, function(err, res) {
+        var event = supplyChain.ForSale()
+        await event.watch((err, res) => {
             sku = res.args.sku.toString(10)
             eventEmitted = true
         })
@@ -133,7 +137,8 @@ contract('SupplyChain', function(accounts) {
 
         var eventEmitted = false
 
-        await supplyChain.ForSale({}, function(err, res) {
+        var event = supplyChain.ForSale()
+        await event.watch((err, res) => {
             sku = res.args.sku.toString(10)
             eventEmitted = true
         })
@@ -162,7 +167,8 @@ contract('SupplyChain', function(accounts) {
 
         var eventEmitted = false
 
-        await supplyChain.ForSale({}, function(err, res) {
+        var event = supplyChain.ForSale()
+        await event.watch((err, res) => {
             sku = res.args.sku.toString(10)
             eventEmitted = true
         })
